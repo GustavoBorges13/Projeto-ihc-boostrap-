@@ -1,0 +1,589 @@
+/* --- :root - DEFINIÇÃO DE VARIÁVEIS DE COR --- */
+:root,
+[data-bs-theme="dark"] {
+    --bg-color: #121212;
+    --bg-secondary-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --text-muted-color: #a0a0a0;
+    --card-bg-color: #2a2a2a;
+    --border-color: #444;
+    --link-color: #1e90ff;
+    --carrosel-indicator: #00b9e7;
+    --carrosel-indicator-inactive: #ffffff;
+
+    /* NOVA VARIÁVEL: Cor da barra de transição para o tema escuro */
+    --transition-bar-bg: #000000;
+    --transition-bar-txt: #fff;
+
+    --nav-bar-bg: #121212;
+    --nva-bar-bg-scroll:  rgba(33, 37, 41, 0.75);
+}
+
+[data-bs-theme="light"] {
+    --bg-color: #ffffff;
+    --bg-secondary-color: #f8f9fa;
+    --text-color: #212529;
+    --text-muted-color: #6c757d;
+    --card-bg-color: #ffffff;
+    --border-color: #dee2e6;
+    --link-color: #0d6efd;
+    --carrosel-indicator: #00b9e7;
+
+    /* NOVA VARIÁVEL: Cor da barra de transição para o tema claro */
+    --transition-bar-bg: #f8f9fa;
+    --transition-bar-txt: #000;
+    --nav-bar-bg: #0A162E;
+    --nva-bar-bg-scroll: rgba(6, 60, 114, 0.74);
+}
+
+/* --- ESTILOS GERAIS USANDO VARIÁVEIS --- */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/*nao use quebra tudo
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+}
+  */
+
+.section-bg-alt {
+    background-color: var(--bg-secondary-color);
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+}
+
+.card .card-title,
+.card .card-text {
+    color: var(--text-color);
+}
+
+.table {
+    --bs-table-color: var(--text-color);
+    --bs-table-border-color: var(--border-color);
+    --bs-table-striped-bg: var(--bg-secondary-color);
+}
+
+/* Força todos os títulos do carrossel a ficarem brancos */
+.carousel-caption h5 {
+    color: #fff !important;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6);
+    /* opcional: melhora contraste na imagem */
+}
+
+
+/* Botão customizado */
+.btn-primary {
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: 0.3s ease;
+    border-radius: 8px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #1574d3, #00a7df);
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(37, 117, 252, 0.4);
+}
+
+/* Cards com efeito */
+.card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem do card com efeito */
+.card-img-top {
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+#contato .btn-primary {
+    background: linear-gradient(45deg, #1e90ff, #00bfff);
+    border: none;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #fff;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(78, 84, 200, 0.3);
+}
+
+#contato .btn-primary:hover {
+    background: linear-gradient(45deg, #1574d3, #00a7df);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(78, 84, 200, 0.4);
+}
+
+#contato .btn-primary:active {
+    transform: scale(0.97);
+    box-shadow: 0 3px 10px rgba(78, 84, 200, 0.4);
+}
+
+
+/* --- ESTILOS DO HERO CARROSSEL --- */
+#heroCarousel {
+    height: 90vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#heroCarousel .carousel-item {
+    height: 90vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* BLUUUURRRRRR */
+#heroCarousel .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: inherit;
+    filter: blur(0px);
+    z-index: 1;
+}
+
+#heroCarousel .carousel-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    z-index: 2;
+}
+
+/* O Texto (Caption) */
+#heroCarousel .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    width: 90%;
+    opacity: 0;
+}
+
+#heroCarousel .carousel-caption.animate__animated {
+    --animate-duration: 0.6s;
+}
+
+/* cor padrão dos indicadores */
+.carousel-indicators [data-bs-target] {
+    background-color: var(--carrosel-indicator-inactive) !important;
+    ;
+    /* branco */
+    width: 12px;
+    /* tamanho */
+    height: 12px;
+    border-radius: 50%;
+    /* deixa redondinho */
+}
+
+/* indicador ativo */
+.carousel-indicators .active {
+    background-color: var(--carrosel-indicator) !important;
+    ;
+    /* vermelho, por exemplo */
+}
+
+/* --- TEXTO FLUIDO E RESPONSIVO (APENAS NO HERO) --- */
+#heroCarousel .carousel-caption h4 {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+#heroCarousel .carousel-caption h2 {
+    margin-top: 50px;
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+#heroCarousel .carousel-caption h2.text-white {
+    margin-top: -10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* --- TÉCNICA DE SOMBRA E GRADIENTE --- */
+.h-gradient {
+    position: relative;
+    color: #ddd;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.h-gradient::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(180deg, #64b2ff, #0086d3) !important;
+    /*background-image: linear-gradient(45deg, #1e90ff, #ffffff) !important;*/
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+    z-index: 1;
+}
+
+/* --- BOTÃO FLUIDO E RESPONSIVO --- */
+.btn--fill {
+    color: #fff;
+    background-image: linear-gradient(45deg, #1e90ff, #00bfff);
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    background-size: 200% auto;
+    text-shadow: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-position 0.5s, box-shadow 0.3s ease;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.btn--fill:hover {
+    background-position: right center;
+    color: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- BARRA DE TRANSIÇÃO E MÁQUINA DE ESCREVER --- */
+.transition-bar {
+    height: 10vh;
+    /* AGORA USA A NOVA VARIÁVEL */
+    background-color: var(--transition-bar-bg);
+    color: var(--text-muted-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+    transition: background-color 0.3s ease-in-out;
+    /* Adiciona transição suave */
+}
+
+.transition-bar p {
+    color: var(--transition-bar-txt);
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* --- Estilos para Efeito Máquina de Escrever --- */
+.typing-effect {
+    border-right: 2px solid rgba(255, 165, 0, .75);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto;
+    animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: rgba(255, 165, 0, .75);
+    }
+}
+
+/* --- ESTILOS DO CABEÇALHO | LOGO | FOOTER --- */
+
+/* Estilo padrão da navbar */
+.navbar {
+    background-color: var( --nav-bar-bg);
+    /* bg-dark, mas com canal alfa para transição */
+    transition: background-color 0.4s ease-in-out;
+    /* Transição suave */
+}
+
+/* Nova classe que será adicionada via JS */
+.navbar-scrolled {
+    background-color: var(--nva-bar-bg-scroll);
+    /* 85% de opacidade */
+    backdrop-filter: blur(10px);
+    /* Efeito de vidro fosco (moderno) */
+    -webkit-backdrop-filter: blur(10px);
+    /* Para compatibilidade com Safari */
+}
+
+.logo-navbar {
+    height: 40px;
+    width: auto;
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem !important;
+    color: #d8d8d8;
+}
+
+footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer p {
+    color: var(--text-muted-color);
+    margin-bottom: 0.5rem;
+}
+
+/* --- RESPONSIVIDADE PARA CELULAR --- */
+@media (max-width: 767px) {
+
+    /* Esconde a barra de transição no celular, o resto é fluido */
+    .transition-bar {
+        display: none;
+    }
+
+    #heroCarousel,
+    #heroCarousel .carousel-item {
+        height: 100vh;
+    }
+
+    #heroCarousel .carousel-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        /* acima do gradiente */
+        text-align: center;
+        width: 90%;
+    }
+
+    #heroCarousel .carousel-caption .btn-container {
+        position: absolute;
+        bottom: -100px;
+        /* ajusta a distância da base */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        /* garante que fique acima do gradiente */
+    }
+
+    /* 2. Fontes Reduzidas */
+    #heroCarousel .carousel-caption h4 {
+        margin-top: 50px;
+        /* Reduz o espaço entre os títulos */
+        font-size: 0.9rem;
+        /* Subtítulo bem menor */
+    }
+
+    #heroCarousel .carousel-caption h2 {
+        font-size: 1.5rem;
+        /* Títulos principais muito menores */
+        line-height: 1.2;
+    }
+
+    #heroCarousel .carousel-caption h2.text-white {
+        margin-top: -5px;
+        /* Ajuste fino no espaçamento */
+    }
+
+
+
+    /* 3. Botão Ajustado */
+    .btn--fill {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+
+
+/* --- ESTILOS DE ACESSIBILIDADE --- */
+/* (Seu código de acessibilidade continua igual) */
+body.alto-contraste {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.alto-contraste .card,
+.alto-contraste .section-bg-alt,
+.alto-contraste footer,
+.alto-contraste .table {
+    background-color: #000 !important;
+    /*border: 1px solid #fff !important;&/
+
+  /* Ajustes das variáveis Bootstrap */
+    --bs-table-color: #fff;
+    /* texto branco */
+    --bs-table-bg: #000;
+    /* fundo da tabela */
+    --bs-table-border-color: #fff;
+    --bs-table-striped-bg: #111;
+    /* linhas alternadas mais claras */
+    --bs-table-striped-color: #fff;
+    --bs-table-hover-bg: #222;
+    /* hover em cinza escuro */
+    --bs-table-hover-color: #fff;
+}
+
+.alto-contraste h1,
+.alto-contraste h2,
+.alto-contraste h5,
+.alto-contraste p,
+.alto-contraste a,
+.alto-contraste label,
+.alto-contraste th,
+.alto-contraste td {
+    color: #fff !important;
+}
+
+.alto-contraste .btn-primary,
+.alto-contraste .btn--fill {
+    background-color: #000 !important;
+    background-image: none !important;
+    color: #FFFF00 !important;
+    border: 2px solid #FFFF00 !important;
+}
+
+.alto-contraste .btn-primary,
+.alto-contraste .btn--fill {
+    background-image: none !important;
+    background-color: #000 !important;
+    color: #FFFF00 !important;
+    border: 2px solid #FFFF00 !important;
+}
+
+.alto-contraste #destaquesCarousel {
+    border: 3px solid #fff !important;
+    border-radius: 10px;
+    /* opcional, pra dar acabamento */
+}
+
+/* Bordas na seção Sobre */
+.alto-contraste #sobre img {
+    border: 3px solid #fff !important;
+}
+
+/* Botão inativo */
+
+/* Botão ativo */
+.navbar-nav .nav-link.active {
+    background-color: #ffffff;
+    /* fundo dourado */
+    color: #000;
+    /* ícone/texto preto */
+    border-radius: 0.3rem;
+}
+
+
+.alto-contraste a.nav-link {
+    color: #FFFF00 !important;
+}
+
+
+.alto-contraste a.nav-link:hover {
+    color: #FFFF00 !important;
+}
+
+
+.alto-contraste a.nav-link {
+    color: #FFFF00 !important;
+}
+
+.alto-contraste .navbar {
+    background: #000;
+    border-bottom: 1px solid #fff;
+}
+
+.alto-contraste #toggle-contrast i{
+  color: #000000; /* cor desejada quando o contraste estiver ativado */
+}
+
+/* Outros botões, apenas mudando se quiser visual diferente no alto contraste */
+.alto-contraste #toggle-brightness i,
+.alto-contraste #increase-font,
+.alto-contraste #decrease-font,
+.alto-contraste #toggle-theme i {
+  color: #ffff00; /* por exemplo, amarelo no alto contraste */
+}
+
+/* Alto contraste + ativo para os outros botões */
+.alto-contraste #toggle-brightness.active i,
+.alto-contraste #toggle-theme.active i,
+.alto-contraste #increase-font.active,
+.alto-contraste #decrease-font.active {
+  color: #000000; /* destaque ativo */
+}
+
+/* cor padrão dos indicadores */
+.alto-contraste .carousel-indicators [data-bs-target] {
+    background-color: #fff !important;
+    ;
+    /* branco */
+    width: 12px;
+    /* tamanho */
+    height: 12px;
+    border-radius: 50%;
+    /* deixa redondinho */
+}
+
+/* indicador ativo */
+.alto-contraste .carousel-indicators .active {
+    background-color: #d8e700 !important;
+    ;
+    /* vermelho, por exemplo */
+}
+
+.alto-contraste .h-gradient::after {
+    background-image: linear-gradient(180deg, #fff564, #cfd300) !important;
+}
+
+
+.alto-contraste .transition-bar {
+    background-color: #000;
+}
+
+.alto-contraste .transition-bar p {
+    color: #fff;
+}
+
+.alto-contraste .form-control::placeholder {
+    color: #ccc;
+}
+
+html.low-brightness {
+    filter: brightness(70%);
+}
