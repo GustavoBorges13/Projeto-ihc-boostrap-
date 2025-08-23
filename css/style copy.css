@@ -1,0 +1,250 @@
+/* --- :root - DEFINIÇÃO DE VARIÁVEIS DE COR --- */
+:root, [data-bs-theme="dark"] {
+  --bg-color: #121212;
+  --bg-secondary-color: #1e1e1e;
+  --text-color: #e0e0e0;
+  --text-muted-color: #a0a0a0;
+  --card-bg-color: #2a2a2a;
+  --border-color: #444;
+  --link-color: #1e90ff;
+}
+
+[data-bs-theme="light"] {
+  --bg-color: #ffffff;
+  --bg-secondary-color: #f8f9fa;
+  --text-color: #212529;
+  --text-muted-color: #6c757d;
+  --card-bg-color: #ffffff;
+  --border-color: #dee2e6;
+  --link-color: #0d6efd;
+}
+
+/* --- ESTILOS GERAIS USANDO VARIÁVEIS --- */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+}
+
+.section-bg-alt {
+  background-color: var(--bg-secondary-color);
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.card .card-title, .card .card-text {
+  color: var(--text-color);
+}
+
+.table {
+    --bs-table-color: var(--text-color);
+    --bs-table-border-color: var(--border-color);
+    --bs-table-striped-bg: var(--bg-secondary-color);
+}
+
+/* --- ESTILOS DO HERO CARROSSEL --- */
+#heroCarousel {
+    height: 90vh;
+    overflow: hidden;
+    position: relative; 
+}
+
+#heroCarousel .carousel-item {
+    height: 90vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#heroCarousel .carousel-item::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    background: inherit;
+    filter: blur(10px);
+    z-index: 1;
+}
+
+#heroCarousel .carousel-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    z-index: 2;
+}
+
+#heroCarousel .carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    width: 90%;
+    opacity: 0; 
+}
+
+#heroCarousel .carousel-caption.animate__animated {
+    --animate-duration: 0.6s;
+}
+
+#heroCarousel .carousel-caption h4 {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    font-size: clamp(1rem, 2vw, 1.3rem); 
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+#heroCarousel .carousel-caption h2 {
+    font-weight: 700;
+    line-height: 1.2;
+    font-size: clamp(2rem, 5vw, 3.4rem); 
+}
+
+#heroCarousel .carousel-caption h2.text-white {
+    margin-top: -10px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.h-gradient { 
+    position: relative; 
+    color: #ddd; 
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8); 
+}
+.h-gradient::after { 
+    content: attr(data-text); 
+    position: absolute; 
+    left: 0; top: 0; 
+    background-image: linear-gradient(45deg, #1e90ff, #ffffff); 
+    -webkit-background-clip: text; 
+    background-clip: text; 
+    color: transparent; 
+    text-shadow: none; 
+    z-index: 1; 
+}
+
+.btn--fill {
+    color: #fff;
+    background-image: linear-gradient(45deg, #1e90ff, #00bfff);
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    background-size: 200% auto;
+    text-shadow: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: background-position 0.5s, box-shadow 0.3s ease;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem) clamp(1.2rem, 3vw, 1.8rem);
+    font-size: clamp(0.8rem, 2vw, 1rem);
+}
+
+.btn--fill:hover {
+    background-position: right center;
+    color: #fff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- BARRA DE TRANSIÇÃO E MÁQUINA DE ESCREVER --- */
+.transition-bar {
+    height: 10vh;
+    background-color: #000;
+    color: var(--text-muted-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(0.8rem, 2vw, 1.1rem);
+}
+.transition-bar p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.typing-effect {
+    border-right: 2px solid rgba(255, 165, 0, .75);
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0 auto;
+    animation: blink-caret .75s step-end infinite;
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgba(255, 165, 0, .75); }
+}
+
+/* --- CABEÇALHO E FOOTER --- */
+.logo-navbar { 
+    height: 40px;
+    width: auto; 
+}
+
+.navbar-nav .nav-link {
+    font-size: 1rem !important;
+}
+
+footer {
+  background-color: var(--bg-secondary-color);
+  border-top: 1px solid var(--border-color);
+  padding: 1.5rem 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+footer p {
+  color: var(--text-muted-color);
+  margin-bottom: 0.5rem;
+}
+
+/* --- RESPONSIVIDADE PARA CELULAR --- */
+@media (max-width: 767px) {
+    .transition-bar {
+        display: none;
+    }
+    #heroCarousel,
+    #heroCarousel .carousel-item {
+        height: 100vh;
+    }
+}
+
+/* --- ESTILOS DE ACESSIBILIDADE --- */
+body.alto-contraste {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+.alto-contraste .card,
+.alto-contraste .section-bg-alt,
+.alto-contraste footer,
+.alto-contraste .table {
+    background-color: #000 !important;
+    border: 1px solid #fff;
+    --bs-table-striped-bg: #000;
+}
+.alto-contraste h1, .alto-contraste h2, .alto-contraste h5, .alto-contraste p, .alto-contraste a, .alto-contraste label, .alto-contraste th, .alto-contraste td {
+    color: #fff !important;
+}
+.alto-contraste .btn-primary, .alto-contraste .btn--fill {
+    background-image: none !important;
+    background-color: #000 !important;
+    color: #FFFF00 !important;
+    border: 2px solid #FFFF00 !important;
+}
+.alto-contraste a.nav-link { color: #FFFF00 !important; }
+.alto-contraste .navbar { border-bottom: 1px solid #fff; }
+
+html.low-brightness {
+    filter: brightness(85%);
+}
