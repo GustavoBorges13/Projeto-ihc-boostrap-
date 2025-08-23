@@ -147,4 +147,26 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleButtonState(buttons.decreaseFont, currentFontSize < 16);
     toggleButtonState(buttons.increaseFont, currentFontSize > 16);
   });
+
+  /* Nada demais... */
+  const btn = document.getElementById('teapotBtn');
+  const modal = document.getElementById('teapotModal');
+  const closeBtn = document.querySelector('.close');
+
+  btn.addEventListener('click', () => {
+    modal.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
 });
+
+
