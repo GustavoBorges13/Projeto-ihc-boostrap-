@@ -18,6 +18,10 @@
     --nav-bar-bg: #121212;
     --nva-bar-bg-scroll:  rgba(33, 37, 41, 0.75);
     --cafezin: #fff;
+
+    --dropdown-itembg: #fff;
+    --dropdown-itemhouver: #000;
+    --nav-houver: #189ef2;
 }
 
 [data-bs-theme="light"] {
@@ -36,6 +40,10 @@
     --nav-bar-bg: #0A162E;
     --nva-bar-bg-scroll: rgba(6, 60, 114, 0.74);
     --cafezin: #000;
+
+    --dropdown-itemhouver: #fff;
+    --dropdown-itembg: #111B31;
+    --nav-houver: #189ef2;
 }
 
 /* --- ESTILOS GERAIS USANDO VARIÁVEIS --- */
@@ -368,6 +376,116 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     color: #d8d8d8;
 }
 
+/* Hover para links e botões do menu */
+.navbar-nav .nav-link:hover {
+  color: var(--nav-houver) !important; /* amarelo ao passar o mouse */
+}
+
+/* Hover para ícones dentro dos botões */
+.navbar-nav .nav-link:hover i {
+  color: var(--nav-houver) !important;
+}
+
+/* Hover para botões de acessibilidade (brightness, contraste, fonte, tema) */
+#toggle-brightness:hover,
+#toggle-contrast:hover,
+#increase-font:hover,
+#decrease-font:hover,
+#toggle-theme:hover {
+  color: var(--nav-houver)!important;
+}
+
+/*
+    Para alto contraste 
+.alto-contraste .navbar-nav .nav-link:hover {
+  color: var(--nav-houver) !important; 
+
+.alto-contraste #toggle-brightness:hover i,
+.alto-contraste #toggle-contrast:hover i,
+.alto-contraste #increase-font:hover,
+.alto-contraste #decrease-font:hover,
+.alto-contraste #toggle-theme:hover i {
+  color: var(--nav-houver) !important;
+}
+*/
+
+/* Hover do botão de idioma */
+.navbar .nav-item.dropdown .dropdown-toggle:hover {
+  color: var(--nav-houver); /* Amarelo ao passar o mouse */
+}
+
+/* Hover normal no menu */
+.navbar-nav .nav-link:hover {
+  color:  var(--nav-houver) !important; /* amarelo ao passar o mouse */
+}
+
+.navbar .nav-item.dropdown .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaço entre bandeira e texto */
+  font-weight: 500;
+  font-size: 16px;
+  color: #fff; /* Cor padrão do texto */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+/* Dropdown menu */
+.navbar .dropdown-menu {
+  min-width: 140px;
+  padding: 0;
+  background-color: var( --nav-bar-bg); /* fundo branco */
+  border-radius: 4px;        /* cantos arredondados */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* sombra opcional */
+}
+
+.navbar .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #d8d8d8;
+  padding: 5px 10px;
+}
+
+/* Botão ativo */
+.navbar-nav .nav-link.active {
+    background-color: #ffffff;
+    /* fundo dourado */
+    color: #000;
+    /* ícone/texto preto */
+    border-radius: 0.3rem;
+}
+
+.navbar .dropdown-item:hover {
+  background-color: var(--dropdown-itembg);
+  color: var(--dropdown-itemhouver);
+}
+
+/* Mantém o botão principal branco mesmo depois de clicar na setinha */
+.navbar .nav-item.dropdown.show .dropdown-toggle {
+  color: #ffffff !important;
+}
+
+/* Ajuste geral para alinhamento do emoji de bandeira */
+.navbar .nav-item.dropdown .dropdown-toggle #current-flag {
+  font-size: 18px; /* Ajusta o tamanho da bandeira */
+}
+
+/* --- Dropdown do idioma ao rolar a página --- */
+.navbar .nav-item.dropdown .dropdown-menu {
+  transition: background-color 0.4s ease-in-out, backdrop-filter 0.4s ease-in-out;
+}
+
+/* Classe adicionada via JS quando rolar */
+.navbar-scrolled .nav-item.dropdown .dropdown-menu {
+  background-color: var(--nva-bar-bg-scroll); /* fundo semi-transparente (escuro) */
+  backdrop-filter: blur(10px);         /* efeito vidro fosco */
+  -webkit-backdrop-filter: blur(10px); /* Safari */
+}
+
 footer {
     background-color: var(--bg-color);
     border-top: 1px solid var(--border-color);
@@ -452,6 +570,21 @@ body.alto-contraste {
     color: #fff !important;
 }
 
+/* Quando o modo contraste estiver ativo */
+.alto-contraste a {
+  color: #FFFF00 !important; /* cor amarelo bem visível */
+  text-decoration: underline !important; /* sublinha para indicar clique */
+  cursor: pointer; /* muda cursor para indicar que é clicável */
+}
+
+/* Se quiser efeito no hover */
+.alto-contraste a:hover {
+  color: #FFFFFF !important; /* muda para branco ao passar o mouse */
+  background-color: #000000; /* opcional: fundo preto ao passar */
+}
+
+
+
 .alto-contraste .card,
 .alto-contraste .section-bg-alt,
 .alto-contraste footer,
@@ -490,17 +623,10 @@ body.alto-contraste {
     background-image: none !important;
     color: #FFFF00 !important;
     border: 2px solid #FFFF00 !important;
+      text-decoration: underline !important; 
 }
 
-.alto-contraste .btn-primary,
-.alto-contraste .btn--fill {
-    background-image: none !important;
-    background-color: #000 !important;
-    color: #FFFF00 !important;
-    border: 2px solid #FFFF00 !important;
-}
-
-.alto-contraste #destaquesCarousel {
+#destaquesCarousel {
     border: 3px solid #fff !important;
     border-radius: 10px;
     /* opcional, pra dar acabamento */
@@ -511,27 +637,9 @@ body.alto-contraste {
     border: 3px solid #fff !important;
 }
 
-/* Botão inativo */
-
-/* Botão ativo */
-.navbar-nav .nav-link.active {
-    background-color: #ffffff;
-    /* fundo dourado */
-    color: #000;
-    /* ícone/texto preto */
-    border-radius: 0.3rem;
-}
-
-
 .alto-contraste a.nav-link {
     color: #FFFF00 !important;
 }
-
-
-.alto-contraste a.nav-link:hover {
-    color: #FFFF00 !important;
-}
-
 
 .alto-contraste a.nav-link {
     color: #FFFF00 !important;
@@ -560,6 +668,68 @@ body.alto-contraste {
 .alto-contraste #increase-font.active,
 .alto-contraste #decrease-font.active {
   color: #000000; /* destaque ativo */
+}
+
+/* Alto contraste */
+.alto-contraste .navbar .nav-item.dropdown .dropdown-toggle {
+  color: #ffff00; /* Texto amarelo no alto contraste */
+}
+
+.alto-contraste .navbar .dropdown-item {
+  color: #ffff00; /* Texto amarelo no menu dropdown */
+  background-color: #000000; /* Fundo preto no menu */
+}
+
+/* NAV HOVERS */
+
+.alto-contraste .navbar-nav .nav-link:hover {
+  color: #FFF !important; 
+}
+
+.alto-contraste #toggle-theme:hover {
+  color: #fff !important;
+}
+
+.alto-contraste a.nav-link:hover {
+    color: #FFFF00 !important;
+}
+
+.alto-contraste .navbar .nav-item.dropdown .dropdown-toggle:hover {
+  color: #ffff00; /* Mantém amarelo no hover */
+}
+
+
+.alto-contraste .navbar .dropdown-item:hover {
+  color: #000000 !important;      /* força texto preto ao hover */
+  background-color: #ffff00 !important; /* força fundo amarelo ao hover */
+}
+
+/*
+#toggle-brightness:hover,
+#toggle-contrast:hover,
+#increase-font:hover,
+#decrease-font:hover,
+#toggle-theme:hover {
+  color: #ffd700 !important;
+}
+*/
+
+/* Hover em botões de acessibilidade ativos */
+.alto-contraste #toggle-brightness.active:hover i,
+.alto-contraste #toggle-theme.active:hover i,
+.alto-contraste #increase-font.active:hover,
+.alto-contraste #decrease-font.active:hover,
+.alto-contraste #toggle-contrast.active:hover i {
+  color: #006290 !important; /* destaque ao passar o mouse */
+}
+
+
+.alto-contraste #toggle-brightness:hover i,
+.alto-contraste #toggle-contrast:hover i,
+.alto-contraste #increase-font:hover,
+.alto-contraste #decrease-font:hover,
+.alto-contraste #toggle-theme:hover i {
+  color: #fff !important;
 }
 
 /* cor padrão dos indicadores */
@@ -605,6 +775,47 @@ body.alto-contraste {
 }
 
 
+/* --- Modo Alto Contraste para Back-to-Top --- */
+.alto-contraste #back-to-top {
+  background-color: #000000 !important; /* fundo preto */
+  border: 2px solid #FFFF00 !important; /* borda amarela */
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.alto-contraste #back-to-top a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #FFFF00 !important; /* setinha amarela */
+  text-decoration: underline !important;
+  text-decoration-color: #FFFF00 !important; /* sublinhado amarelo normal */
+  border-radius: 50% !important;
+}
+
+.alto-contraste #back-to-top a i {
+  color: #FFFF00 !important; /* ícone amarelo */
+}
+
+/* Hover no modo alto contraste */
+.alto-contraste #back-to-top:hover {
+  background-color: #000000 !important;
+  border: 2px solid #FFFFFF !important; /* borda branca */
+}
+
+.alto-contraste #back-to-top:hover a {
+  text-decoration-color: #FFFFFF !important; /* sublinhado branco */
+}
+
+.alto-contraste #back-to-top:hover a i {
+  color: #FFFFFF !important; /* ícone branco */
+}
+
+
 html.low-brightness {
     filter: brightness(70%);
 }
@@ -642,8 +853,56 @@ html.low-brightness {
     border-radius: 5px;
 }
 
-#userwayAccessibilityIcon {
-  top: 50% !important;     /* joga pro meio da tela na vertical */
-  right: 0 !important;     /* mantém encostado na direita */
-  transform: translateY(+900%) !important; /* centraliza no meio certinho */
+
+#back-to-top {
+  position: fixed;
+  bottom: 15px;
+  right: 70px !important; /* distância da direita */
+  width: 50px;
+  height: 50px;
+  background: #0e4b95;
+  border-radius: 50%;
+  border: 1px solid #ffffff; /* borda branca fina */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, border 0.3s;
+  z-index: 999;
 }
+
+
+#back-to-top a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#back-to-top:hover {
+  background: #fafafa;
+  border: 1px solid #0e4b95; /* borda branca fina */
+}
+
+#back-to-top:hover a {
+  color: #0e4b95;
+}
+
+#back-to-top {
+  right: 70px !important; /* distância da direita */
+  bottom: 15
+  px !important; /* distância do rodapé */
+}
+

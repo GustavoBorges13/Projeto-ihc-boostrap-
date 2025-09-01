@@ -166,6 +166,38 @@ document.addEventListener('DOMContentLoaded', () => {
       modal.style.display = 'none';
     }
   });
+  
+
+  // Troca o emoji da bandeira quando o usuário seleciona outro idioma
+  document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      const flag = item.dataset.flag;
+      const lang = item.dataset.lang;
+      document.getElementById('current-flag').textContent = flag;
+      document.getElementById('current-lang').textContent = lang;
+    });
+  });
+
+
+ // Mostrar/ocultar o botão ao rolar a página
+  document.addEventListener("scroll", function () {
+    const backToTop = document.getElementById("back-to-top");
+    if (window.scrollY > 200) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  });
+
+  // Scroll suave ao clicar no botão
+  document.querySelector("#back-to-top a").addEventListener("click", function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
 
 });
 
