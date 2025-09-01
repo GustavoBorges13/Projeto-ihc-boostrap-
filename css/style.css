@@ -775,6 +775,7 @@ body.alto-contraste {
 }
 
 
+<<<<<<< HEAD
 /* --- Modo Alto Contraste para Back-to-Top --- */
 .alto-contraste #back-to-top {
   background-color: #000000 !important; /* fundo preto */
@@ -816,6 +817,8 @@ body.alto-contraste {
 }
 
 
+=======
+>>>>>>> 6f301213db0a6a28137f8cf6ccaf3ca9408e1cfb
 html.low-brightness {
     filter: brightness(70%);
 }
@@ -853,6 +856,7 @@ html.low-brightness {
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
 
 #back-to-top {
   position: fixed;
@@ -906,3 +910,10 @@ html.low-brightness {
   px !important; /* distância do rodapé */
 }
 
+=======
+#userwayAccessibilityIcon {
+  top: 50% !important;     /* joga pro meio da tela na vertical */
+  right: 0 !important;     /* mantém encostado na direita */
+  transform: translateY(+900%) !important; /* centraliza no meio certinho */
+}
+>>>>>>> 6f301213db0a6a28137f8cf6ccaf3ca9408e1cfb
